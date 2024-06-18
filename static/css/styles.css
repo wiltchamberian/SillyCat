@@ -1,0 +1,25 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  display: flex;
+  margin: 20px auto;  /* 居中显示 */
+}
+
+#sidebar {
+  flex:0.2;
+  background-color: #d3d3d3;  /* 左侧侧边栏的背景色 */
+  padding: 20px;
+}
+
+#content {
+  flex:0.8;
+  background-color: #ffffff;  /* 右侧内容区域的背景色 */
+  padding: 20px;
+}
