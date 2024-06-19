@@ -23,3 +23,10 @@ body {
   background-color: #ffffff;  /* 右侧内容区域的背景色 */
   padding: 20px;
 }
+
+#welcome {
+  font-size: 20px;
+  line-height: 1.65;
+  font-family: "Comic Sans MS", myriad-pro,helvetica,arial,sans-serif;
+  color: green;
+}

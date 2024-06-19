@@ -31,12 +31,20 @@ def projects():
     return render_template('projects.html', page_content=page_content)
 
 # Contact 页面，继承基础模板
-@app.route('/contact')
-def contact():
+@app.route('/computer_science')
+def computer_science():
     # 传递变量到模板
-    page_content = get_page_content('contact.html')  # 获取联系页面的内容
+    page_content = get_page_content('cs.html')  # 获取联系页面的内容
 
-    return render_template('contact.html', page_content=page_content)
+    return render_template('cs.html', page_content=page_content)
+
+@app.route('/mathematics')
+def mathematics():
+    return render_template('mathematics.html')
+
+@app.route('/math_content')
+def math_content():
+    return render_template('math_content.html')
 
 # 模拟从文件系统或数据库获取页面内容的函数
 def get_page_content(page_name):
