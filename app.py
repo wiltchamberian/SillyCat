@@ -53,6 +53,10 @@ def game_development():
 def get_files():
   return get_the_files()
 
+@app.route('/open_file', methods=['POST'])
+def open_file():
+  return jsonify({'error': 'User folder not found'})
+
 # 模拟从文件系统或数据库获取页面内容的函数
 def get_page_content(page_name):
     # 这里可以根据实际情况从文件系统、数据库或其他数据源获取页面内容
