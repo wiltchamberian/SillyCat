@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from files import *
 
 app = Flask(__name__)
 
@@ -33,22 +34,24 @@ def projects():
 # Contact 页面，继承基础模板
 @app.route('/computer_science')
 def computer_science():
-    # 传递变量到模板
-    #page_content = get_page_content('cs.html')  # 获取联系页面的内容
-
-    return render_template('cs.html')
-
-@app.route('/mathematics')
-def mathematics():
-    return render_template('mathematics.html')
+  return render_template('cs.html')
 
 @app.route('/math_content')
 def math_content():
-    return render_template('math_content.html')
+  return render_template('math_content.html')
+
+@app.route('/editor')
+def editor():
+  return render_template('editor.html')
 
 @app.route('/game_development')
 def game_development():
-    return render_template('game_development.html')
+  return render_template('game_development.html')
+
+# Endpoint to handle client request
+@app.route('/get_files', methods=['POST'])
+def get_files():
+  return get_the_files()
 
 # 模拟从文件系统或数据库获取页面内容的函数
 def get_page_content(page_name):
@@ -61,4 +64,4 @@ def get_page_content(page_name):
         return f'<p>{page_name} not found.</p>'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+  app.run(debug=True)

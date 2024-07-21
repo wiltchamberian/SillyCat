@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+  <h3>SubMenu</h3>
+  <ul>
+    <li><a href="{{ url_for('math_content') }}">Content Management</a></li>
+    <li><a href="{{ url_for('editor') }}">Editor</a></li>
+  </ul>
+{% endblock %}

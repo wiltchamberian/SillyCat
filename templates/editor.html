@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "math.html" %}
 
 {% block extra_head %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
@@ -8,16 +8,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/xml/xml.min.js"></script>
 <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-<script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-{% endblock %}
-
-{% block sidebar %}
-  <h3>SubMenu</h3>
-  <ul>
-    <li><a href="{{ url_for('math_content') }}">Content Management</a></li>
-  </ul>
 {% endblock %}
 
 {% block content %}
@@ -68,11 +58,11 @@
   var btn = document.getElementById("export");
   btn.addEventListener('mouseup', handleRelease);
   function handleRelease(){
-  var textRange = getRangeText(editor);
-  var mathjaxContent =convertLatexToMathJax(textRange);
-  var tempHTML = createTempHTML(mathjaxContent);
-  console.log(tempHTML);
-  convertHTMLToPDF(tempHTML, 'mathjax_result.pdf');
+    var textRange = getRangeText(editor);
+    var mathjaxContent =convertLatexToMathJax(textRange);
+    var tempHTML = createTempHTML(mathjaxContent);
+    console.log(tempHTML);
+    convertHTMLToPDF(tempHTML, 'mathjax_result.pdf');
   }
 
     // Initial rendering

@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 
+{% block head %}
+  <div id="header">Here is some content about me:</div>
+{% endblock %}
+
 {% block content %}
-    <h2>About Me</h2>
-    <div>
-        <p>Here is some content about me:</p>
-        <p>{{ page_content|safe }}</p>
-    </div>
+  <p class = "article-index">Interest:
+    <div>mathematics</div>
+    <div>computer science</div>
+    <div>game development</div>
+    <div>programming</div>
+  </p>
+  <p class = "article-index">Type:
+    <div>INTP</div>
+  </p>
 {% endblock %}

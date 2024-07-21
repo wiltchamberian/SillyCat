@@ -55,3 +55,12 @@ body {
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
+
+/* 设置div的样式以实现内部滚动条 */
+.scrollable {
+  width: 100%;       /* 宽度 */
+  height: 100%;      /* 高度 */
+  border: 1px solid #ccc; /* 边框 */
+  padding: 10px;      /* 内边距 */
+  overflow: auto;     /* 自动显示滚动条 */
+}

@@ -1,0 +1,17 @@
+{
+  "files":[
+	  {
+		"guid": "a10c7246-791a-4e78-9741-86902a7b960f",
+		"name": "$$E=mc^2$$"
+	  },
+	  {
+		"guid": "b84e67f3-2b95-46a7-81f5-9e072d3e0b7e",
+		"name": "Alice Smith"
+	  },
+	  {
+		"guid": "c9f5e532-bf3e-4932-bf5e-4c788a6f0e2b",
+		"name": "Bob Johnson"
+	  }
+  ]
+}
+
