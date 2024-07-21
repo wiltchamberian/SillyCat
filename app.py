@@ -12,7 +12,7 @@ def before_request():
 def index():
     app_root = request.url_root
     print(f"Flask app is running at: {app_root}")
-    return render_template('base.html')
+    return render_template('index.html')
 
 # About 页面，继承基础模板
 @app.route('/about')
@@ -26,17 +26,17 @@ def about():
 @app.route('/projects')
 def projects():
     # 传递变量到模板
-    page_content = get_page_content('projects.html')  # 获取项目页面的内容
+    #page_content = get_page_content('projects.html')  # 获取项目页面的内容
 
-    return render_template('projects.html', page_content=page_content)
+    return render_template('projects.html')
 
 # Contact 页面，继承基础模板
 @app.route('/computer_science')
 def computer_science():
     # 传递变量到模板
-    page_content = get_page_content('cs.html')  # 获取联系页面的内容
+    #page_content = get_page_content('cs.html')  # 获取联系页面的内容
 
-    return render_template('cs.html', page_content=page_content)
+    return render_template('cs.html')
 
 @app.route('/mathematics')
 def mathematics():
@@ -45,6 +45,10 @@ def mathematics():
 @app.route('/math_content')
 def math_content():
     return render_template('math_content.html')
+
+@app.route('/game_development')
+def game_development():
+    return render_template('game_development.html')
 
 # 模拟从文件系统或数据库获取页面内容的函数
 def get_page_content(page_name):

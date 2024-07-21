@@ -5,6 +5,8 @@ body {
   background-color: #f1f1f1;
   margin: 0;
   padding: 0;
+  display: flex;
+  height: 100vh; /* 让布局占据整个视口高度 */
 }
 
 #container {
@@ -13,20 +15,43 @@ body {
 }
 
 #sidebar {
-  flex:0.2;
+  width:300px;
+  /*flex:0.2;*/
   background-color: #d3d3d3;  /* 左侧侧边栏的背景色 */
-  padding: 20px;
+  /*padding: 20px;*/
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
 }
 
 #content {
-  flex:0.8;
+  font-family: Arial, sans-serif;
+  flex:1;
   background-color: #ffffff;  /* 右侧内容区域的背景色 */
-  padding: 20px;
+  padding-top:50px; /*make content start from undering title*/
+  overflow-y: auto; 
+  position: relative;
 }
 
-#welcome {
+#head {
   font-size: 20px;
   line-height: 1.65;
-  font-family: "Comic Sans MS", myriad-pro,helvetica,arial,sans-serif;
+  font-family: Arial, sans-serif;
   color: green;
+}
+
+#header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: fixed; /* 固定定位，固定在顶部 */
+  top: 0; /* 距离顶部 0 像素 */
+  left: 300px; /* 距离左侧与左侧栏宽度相同 */
+  width: calc(100% - 300px); /* 宽度为父元素宽度减去左侧栏宽度 */
+  z-index: 1000; /* 设置一个较高的 z-index，确保在文章索引上方 */
+}
+
+.article-index {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
 }

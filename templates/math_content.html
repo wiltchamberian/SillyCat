@@ -1,0 +1,57 @@
+{% extends "mathematics.html" %}
+
+
+
+{% block extra_head %}
+{{ super() }}
+<style>
+  /* 设置div的样式以实现内部滚动条 */
+  .scrollable {
+      width: 100%;       /* 宽度 */
+      height: 100%;      /* 高度 */
+      border: 1px solid #ccc; /* 边框 */
+      padding: 10px;      /* 内边距 */
+      overflow: auto;     /* 自动显示滚动条 */
+  }
+</style>
+
+{% endblock %}
+
+
+{% block head %}
+  <div id="header">Articles</div>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script>
+  var files = [
+    "test latex1: \\( E = mc^2 \\) ,it works",
+    "test latex2: \\( E = mc^2 \\) ,it works",
+    "test latex3: \\( E = mc^2 \\) ,it works",
+    "test latex4: \\( E = mc^2 \\) ,it works",
+    "test latex5: \\( E = mc^2 \\) ,it works",
+    "test latex6: \\( E = mc^2 \\) ,it works",
+    "test latex7: \\( E = mc^2 \\) ,it works",
+    "test latex8: \\( E = mc^2 \\) ,it works",
+    "test latex9: \\( E = mc^2 \\) ,it works",
+    "test latex10: \\( E = mc^2 \\) ,it works",
+    "test latex11: \\( E = mc^2 \\) ,it works",
+    "test latex12: \\( E = mc^2 \\) ,it works",
+  ];
+  var content = document.getElementById('content');
+  files.forEach(function(data, index) {
+    var article = document.createElement('p');
+    article.classList.add('article-index');
+    article.textContent = data;  // 或者使用 innerHTML 根据实际需要
+    content.appendChild(article);
+  
+    /*MathJax.typesetPromise([article]).catch(function (err) {
+      console.log('Error rendering MathJax:', err);
+    });*/
+  });
+</script>
+{% endblock %}
