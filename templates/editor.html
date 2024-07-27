@@ -7,7 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/xml/xml.min.js"></script>
 <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+<script src="../static/js/helper.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -82,8 +82,8 @@
     var textRange = getRangeText(editor);
 
     var outputDiv = document.getElementById("mathjax-container");
+    
     outputDiv.innerHTML =convertLatexToMathJax(textRange);
-
     MathJax.typesetPromise([outputDiv]).catch(function (err) {
       console.error("Error during MathJax typesetting: " + err.message);
     });
@@ -104,6 +104,17 @@ function createTempHTML(mathjaxContent) {
   tempHTML += '<div class="mathjax-content">' + mathjaxContent + '</div>';
   tempHTML += '</body></html>';
   return tempHTML;
+}
+
+//把文档内容发送到服务器
+function send_doc_to_server(doc){
+  js = {
+    "content":doc
+  };
+  js_string = JSON.stringify(js);
+  send_message("save_doc", js_string, function(data){
+    //do nothing
+  });
 }
 
 // 将临时 HTML 文件转换为 PDF

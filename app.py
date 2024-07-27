@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from files import *
+from models import *
 
-app = Flask(__name__)
 
 # 在每次请求处理之前执行的操作
 @app.before_request
@@ -48,14 +48,7 @@ def editor():
 def game_development():
   return render_template('game_development.html')
 
-# Endpoint to handle client request
-@app.route('/get_files', methods=['POST'])
-def get_files():
-  return get_the_files()
 
-@app.route('/open_file', methods=['POST'])
-def open_file():
-  return jsonify({'error': 'User folder not found'})
 
 # 模拟从文件系统或数据库获取页面内容的函数
 def get_page_content(page_name):
