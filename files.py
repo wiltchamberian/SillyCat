@@ -6,8 +6,8 @@ import uuid
 from models import *
 from datetime import datetime
 
-@app.route('/get_files', methods=['POST'])
-def get_files():
+@app.route('/get_files_old', methods=['POST'])
+def get_files_old():
   user_id = request.json.get('user_id')  # Assume client sends user_id in JSON
   if not user_id:
       return jsonify({'error': 'User ID not provided'}), 400
@@ -30,6 +30,15 @@ def get_files():
   else:
     return jsonify({'error': 'User folder not found'}), 404
 
+@app.route('/get_files', methods=['GET', 'POST'])
+def get_files():
+  try:
+    user = request.json.get("user")
+    files = File.query.filter_by(user = user).with_entities(File.title, File.guid).all()
+    files_list = [{'title': file.title, 'guid': file.guid} for file in files]
+    return jsonify(files_list)
+  except Exception as e:
+    return jsonify({'error': str(e)}), 500
 
 @app.route('/open_file', methods = ['GET', 'POST'])
 def open_file():
@@ -40,23 +49,24 @@ def open_file():
   if not file:
       return jsonify({'error': 'File not found'}), 404
     
-  return render_template('article.html', user=user, resource_id=file.guid, name = file.name, publish_time = file.publish_time, content = file.content )
+  return render_template('article.html', file = file)
 
 @app.route('/save_file', methods = ['POST'])
 def save_file():
-    textName = request.json.get('name') 
-    user = request.json.get('user')
-    content = request.json.get('content')
-    file_guid = str(uuid.uuid4())
-    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #img_str = 
-    new_file = File(
-        guid=file_guid,
-        name=textName,
-        user_name=user,
-        publish_time = current_time,
-    )
-    db.session.add(new_file)
-    db.session.commit()
+  title = request.json.get('title') 
+  user = request.json.get('user')
+  content = request.json.get('content')
+  file_guid = str(uuid.uuid4())
+  current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+  #img_str = 
+  new_file = File(
+      guid=file_guid,
+      title= title,
+      user_name=user,
+      publish_time = current_time,
+      content = content
+  )
+  db.session.add(new_file)
+  db.session.commit()
 
-    return jsonify({'message': 'File saved successfully', 'guid': file_guid}), 200
+  return jsonify({'message': 'File saved successfully', 'guid': file_guid}), 200

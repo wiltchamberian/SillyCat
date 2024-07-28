@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 from files import *
 from models import *
 
+with app.app_context():
+  pass
 
 # 在每次请求处理之前执行的操作
 @app.before_request
