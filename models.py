@@ -1,9 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///files.db'  # SQLite 数据库
-db = SQLAlchemy(app)
+db = SQLAlchemy()
+
+def initial_db(app):
+  db.init_app(app)
 
 class File(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,4 +18,5 @@ class File(db.Model):
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
+    #password = db.Column(db.String(255), nullable=False)
 

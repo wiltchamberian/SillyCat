@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>article</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <script type="text/javascript"
       src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
@@ -13,53 +14,6 @@
             margin: 0;
             padding: 0;
             background-color: #f8f8f8;
-        }
-        .navbar {
-            display: flex;
-            position: fixed;
-            justify-content: space-between;
-            align-items: center;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 0px 0px;
-            z-index: 1000;
-        }
-        .navbar .title {
-            font-weight: bold;
-            color: #333;
-            margin-left: 10%;
-        }
-        .navbar .middle-toolbar {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .navbar .middle-toolbar .item {
-            margin: 0 10px;
-        }
-        .navbar .middle-toolbar .item span {
-            font-size: 0.85rem;
-            color: #555;
-        }
-        .navbar .middle-toolbar .item a {
-            text-decoration: none;
-            color: #007bff;
-            font-size: 0.85rem;
-        }
-        .navbar .actions {
-            gap: 15px;
-            margin-right: 10%;
-        }
-        .navbar .actions a {
-            text-decoration: none;
-            color: #007bff;
         }
         .container {
             width: 60%;
@@ -232,22 +186,18 @@
         </div>
         <div class="comment-form">
             <h2>Post a Comment</h2>
-            <textarea placeholder="在这里输入你的评论..."></textarea>
+            <textarea placeholder="please input your comment..."></textarea>
             <button>Submit</button>
         </div>
         <div class="comments-section">
             <div class="header">
               <h2>Comments Section</h2>
-              <span class="comment-count">共 5 条评论</span>
+              <span class="comment-count">comment count: 0</span>
             </div>
-            <div class="comment">
+            <!--<div class="comment">
                 <p class="author">评论者 1, 2024年7月27日</p>
                 <p>这是评论内容示例。</p>
-            </div>
-            <div class="comment">
-                <p class="author">评论者 2,2024年7月26日</p>
-                <p>这是另一个评论内容示例。</p>
-            </div>
+            </div>-->
             <!-- 更多评论可以在这里添加 -->
         </div>
     </div>

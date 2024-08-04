@@ -1,11 +1,11 @@
 
 function fetch_files(user) {
-  send_message('/get_files', JSON.stringify({ user: user }),displayFiles);
+  send_message('/get_file_list', JSON.stringify({ user: user }),displayFiles);
 }
 
 function displayFiles(data) {
   files = data
-  var content = document.getElementById('content');
+  content = document.querySelector(".content");
   files.forEach((file, index) => {
     let article = document.createElement('p');
     const link = document.createElement('a');

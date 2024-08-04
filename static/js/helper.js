@@ -1,4 +1,7 @@
 
+function o2j(js_object) {
+  return JSON.stringify(js_object);
+}
 
 function send_message(name, js_string, func) {
   fetch(name, {
@@ -8,7 +11,7 @@ function send_message(name, js_string, func) {
     },
     body: js_string
 })
-.then(response => response.json())
+.then(response => response.json())//here is a javascript object
 .then(data => {
   func(data);
 })

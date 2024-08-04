@@ -19,6 +19,7 @@
 <div id="editor-container">
   <h2>Input Text</h2>
   <textarea id="editor" rows="10" cols="40"></textarea>
+  <button id="save">save</button>
   <button id="export">export</button>
 </div>
 {% endblock %}
@@ -55,15 +56,31 @@
       }
     });
   
-  var btn = document.getElementById("export");
-  btn.addEventListener('mouseup', handleRelease);
-  function handleRelease(){
-    var textRange = getRangeText(editor);
-    var mathjaxContent =convertLatexToMathJax(textRange);
-    var tempHTML = createTempHTML(mathjaxContent);
-    console.log(tempHTML);
-    convertHTMLToPDF(tempHTML, 'mathjax_result.pdf');
-  }
+    let file_guid = undefined;
+    var saveBtn = document.getElementById("save");
+    saveBtn.addEventListener('mouseup',function(){
+      userName="wiltchamberian";
+      value = editor.getValue();
+      content = convertLatexToMathJax(value);
+      js_object = {
+        title:"None",
+        user:userName,
+        content:content,
+        guid:file_guid
+      }
+      send_message("upsert_file", o2j(js_object), function(data){
+        file_guid = data.guid;
+      })
+    })
+    var btn = document.getElementById("export");
+    btn.addEventListener('mouseup', handleRelease);
+    function handleRelease(){
+      var textRange = getRangeText(editor);
+      var mathjaxContent =convertLatexToMathJax(textRange);
+      var tempHTML = createTempHTML(mathjaxContent);
+      console.log(tempHTML);
+      convertHTMLToPDF(tempHTML, 'mathjax_result.pdf');
+    }
 
     // Initial rendering
     renderMath(editor);
